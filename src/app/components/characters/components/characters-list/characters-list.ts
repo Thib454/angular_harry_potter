@@ -1,13 +1,10 @@
 import { Component, input, Input } from '@angular/core';
 import { CharacterModel } from '../../../../shared/models/character.model';
-import {NgForOf, NgIf} from '@angular/common';
+
 
 @Component({
   selector: 'app-characters-list',
-  imports: [
-    NgIf,
-    NgForOf
-  ],
+  imports: [],
   templateUrl: './characters-list.html',
   styleUrl: './characters-list.scss',
 })

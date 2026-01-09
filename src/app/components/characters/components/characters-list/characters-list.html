@@ -7,22 +7,25 @@
 }
 
 @for (character of characters(); track character.id) {
-  <h1>{{ character.house }}</h1>
-} @empty {
+  <h1>{{ character.name }}</h1>
+  } @empty {
   <p>No characters found in the list.</p>
 }
 
 ---------
 
 <!-- Old version -->
-<div *ngIf="characters().length > 0; else noCharacters">
-  <p>Total : <strong>{{ characters().length }} characters</strong></p>
-</div>
-
-<ng-template #noCharacters>
+@if (characters().length > 0) {
+  <div>
+    <p>Total : <strong>{{ characters().length }} characters</strong></p>
+  </div>
+} @else {
   <p>No characters found</p>
-</ng-template>
+}
+
 
 <div>
-  <h1 *ngFor="let character of characters(); trackBy: trackById"> {{ character.house }}</h1>
+  @for (character of characters(); track trackById($index, character)) {
+    <h1> {{ character.house }}</h1>
+  }
 </div>
