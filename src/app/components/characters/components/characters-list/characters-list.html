@@ -11,3 +11,18 @@
 } @empty {
   <p>No characters found in the list.</p>
 }
+
+---------
+
+<!-- Old version -->
+<div *ngIf="characters().length > 0; else noCharacters">
+  <p>Total : <strong>{{ characters().length }} characters</strong></p>
+</div>
+
+<ng-template #noCharacters>
+  <p>No characters found</p>
+</ng-template>
+
+<div>
+  <h1 *ngFor="let character of characters(); trackBy: trackById"> {{ character.house }}</h1>
+</div>

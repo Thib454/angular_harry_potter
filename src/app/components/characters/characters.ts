@@ -1,4 +1,4 @@
-import { Component, inject, OnInit, ChangeDetectorRef, signal } from '@angular/core';
+import { Component, inject, OnInit, ChangeDetectorRef, signal, OnDestroy } from '@angular/core';
 import { CharacterModel } from '../../shared/models/character.model';
 import { CharacterService } from '../../shared/services/character-service';
 import { CharactersList } from './components/characters-list/characters-list';
@@ -12,13 +12,12 @@ import { CharactersList } from './components/characters-list/characters-list';
 export class Characters implements OnInit {
 
   // protected characters: CharacterModel[] = [];
+  // private cdref = inject(ChangeDetectorRef);
 
   // Mode Signal
   protected characters = signal<CharacterModel[]>([]);
 
   private characterService = inject(CharacterService);
-
-  // private cdref = inject(ChangeDetectorRef);
 
   ngOnInit(): void {
     this.characterService.getAllCharacter().subscribe((allCharacters: CharacterModel[]) => {
