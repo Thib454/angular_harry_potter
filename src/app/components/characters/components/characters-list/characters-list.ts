@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, input, Input } from '@angular/core';
 import { CharacterModel } from '../../../../shared/models/character.model';
 
 @Component({
@@ -9,6 +9,9 @@ import { CharacterModel } from '../../../../shared/models/character.model';
 })
 export class CharactersList {
 
-  @Input() characters: CharacterModel[] = [];
+  // @Input() characters: CharacterModel[] = [];
+
+  // Mode Signal
+  characters = input.required<CharacterModel[]>();
 
 }
