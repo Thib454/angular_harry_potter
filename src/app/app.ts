@@ -1,13 +1,13 @@
 import { Component, signal } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import { Characters } from './components/characters/characters';
+import { Header } from './core/header/header';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, Characters],
+  imports: [RouterOutlet, Header],
   templateUrl: './app.html',
   styleUrl: './app.scss'
 })
 export class App {
-  protected readonly title = signal('angular_harry_potter');
+  protected readonly title = signal('hp-portfolio-ia');
 }
