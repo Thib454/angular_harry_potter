@@ -1,0 +1,14 @@
+<h1>Harry Potter - Characters</h1>
+
+@if (characters.length > 0 ) {
+  <p>Total : <strong>{{ characters.length }}</strong></p>
+} @else {
+  <p>No character found</p>
+}
+
+@for (character of characters; track character.id) {
+    <p>{{ character.name || 'Unknown' }}</p>
+    <p>{{ character.house || 'Unknown' }}</p>
+} @empty {
+  <p>No character found in the list</p>
+}
