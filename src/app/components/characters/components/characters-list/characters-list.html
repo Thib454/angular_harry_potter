@@ -1,20 +1,52 @@
-<h1>Harry Potter - Characters</h1>
+<h1>Harry Potter - Personnages</h1>
 
-@if (characters().length > 0) {
-  <p>Total : <strong>{{ characters().length }} characters</strong></p>
-} @else {
-  <p>No characters found</p>
-}
+<section class="characters-list">
+  <h2 class="characters-list__title">Liste des Personnages :</h2>
 
-@for (character of characters(); track character.id) {
-  <h1>{{ character.name }}</h1>
-  } @empty {
-  <p>No characters found in the list.</p>
-}
+  <p class="characters-list__count">
+    Total : <strong>{{ characters().length }} characters</strong>
+  </p>
+
+  <ul class="characters-list__grid">
+    @for (character of characters(); track character.id) {
+    <li class="character-card">
+      <a [routerLink]="[character.id]" class="character-card__link">
+      <div class="character-card__image-wrapper">
+        @if (character.image && character.image !== '') {
+        <img [src]="character.image" [alt]="character.name" class="character-card__image" />
+        } @else {
+        <div class="character-card__image--placeholder">
+          <span>🧙</span>
+        </div>
+        }
+      </div>
+
+      <div class="character-card__body">
+        <h3 class="character-card__name">
+          {{ character.name }}
+        </h3>
+
+        <p class="character-card__actor">
+          Interprété par : {{ character.actor }}
+        </p>
+
+        <p class="character-card__house">
+          Maison : {{ character.house || 'Inconnue' }}
+        </p>
+
+        <p class="character-card__status">
+          Statut : {{ character.alive ? 'En vie' : 'Décédé' }}
+        </p>
+      </div>
+      </a>
+    </li>
+    }
+  </ul>
+</section>
 
 ---------
 
-<!-- Old version -->
+<!-- Old version
 @if (characters().length > 0) {
   <div>
     <p>Total : <strong>{{ characters().length }} characters</strong></p>
@@ -22,10 +54,8 @@
 } @else {
   <p>No characters found</p>
 }
-
-
 <div>
   @for (character of characters(); track trackById($index, character)) {
     <h1> {{ character.house }}</h1>
   }
-</div>
+</div> -->

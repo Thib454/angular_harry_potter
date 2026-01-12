@@ -3,14 +3,14 @@
   <p class="staff-list__count">{{ staff.length }} membre(s)</p>
 
   <ul class="staff-list__grid">
-    @for (member of staff; track member.id) {
+    @for (character of staff; track character.id) {
       <li class="staff-card">
         <div class="staff-card__image-wrapper">
           <!-- Affiche image si disponible, sinon fallback -->
-          @if (member.image && member.image !== '') {
+          @if (character.image && character.image !== '') {
             <img
-              [src]="member.image"
-              [alt]="member.name"
+              [src]="character.image"
+              [alt]="character.name"
               class="staff-card__image"
             />
           } @else {
@@ -21,12 +21,11 @@
         </div>
 
         <div class="staff-card__body">
-          <h3 class="staff-card__name">{{ member.name }}</h3>
-          <p class="staff-card__role">{{ member.role || 'Rôle inconnu' }}</p>
-          <p class="staff-card__actor">Interprété par : {{ member.actor }}</p>
-          <p class="staff-card__house">Maison : {{ member.house || 'Inconnue' }}</p>
+          <h3 class="staff-card__name">{{ character.name }}</h3>
+          <p class="staff-card__actor">Interprété par : {{ character.actor }}</p>
+          <p class="staff-card__house">Maison : {{ character.house || 'Inconnue' }}</p>
           <p class="staff-card__status">
-            Statut : {{ member.alive ? 'En vie' : 'Décédé' }}
+            Statut : {{ character.alive ? 'En vie' : 'Décédé' }}
             </p>
         </div>
       </li>
