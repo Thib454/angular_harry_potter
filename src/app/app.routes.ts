@@ -12,5 +12,14 @@ export const routes: Routes = [
       section: 'Harry Potter',
       breadcrumb: 'Characters'
     }
+  },
+  { path: 'staff', // Lazy-loading.
+    loadComponent: () => import('./components/staff/staff')
+      .then(component => component.StaffPage),
+    title: 'Staff',
+    data: {
+      section: 'Harry Potter',
+      breadcrumb: 'Staff'
+    }
   }
 ];
