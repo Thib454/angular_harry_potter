@@ -1,0 +1,35 @@
+<section class="staff-list">
+  <h2 class="staff-list__title">Effectifs du Staff :</h2>
+  <p class="staff-list__count">{{ staff.length }} membre(s)</p>
+
+  <ul class="staff-list__grid">
+    @for (member of staff; track member.id) {
+      <li class="staff-card">
+        <div class="staff-card__image-wrapper">
+          <!-- Affiche image si disponible, sinon fallback -->
+          @if (member.image && member.image !== '') {
+            <img
+              [src]="member.image"
+              [alt]="member.name"
+              class="staff-card__image"
+            />
+          } @else {
+            <div class="staff-card__image--placeholder">
+              <span>🧙</span>
+            </div>
+          }
+        </div>
+
+        <div class="staff-card__body">
+          <h3 class="staff-card__name">{{ member.name }}</h3>
+          <p class="staff-card__role">{{ member.role || 'Rôle inconnu' }}</p>
+          <p class="staff-card__actor">Interprété par : {{ member.actor }}</p>
+          <p class="staff-card__house">Maison : {{ member.house || 'Inconnue' }}</p>
+          <p class="staff-card__status">
+            Statut : {{ member.alive ? 'En vie' : 'Décédé' }}
+            </p>
+        </div>
+      </li>
+    }
+  </ul>
+</section>

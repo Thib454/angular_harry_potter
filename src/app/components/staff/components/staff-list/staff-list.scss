@@ -1,0 +1,114 @@
+.staff-list {
+  padding: 2rem 1rem;
+  color: #222;
+  font-family: Arial, sans-serif;
+
+  &__title {
+    font-size: 2rem;
+    text-align: center;
+    margin-bottom: 0.25rem;
+  }
+
+  &__count {
+    text-align: center;
+    margin-bottom: 1.5rem;
+    color: #555;
+    font-size: 1rem;
+  }
+
+  &__grid {
+    list-style: none;
+    display: grid;
+    gap: 1.5rem;
+    padding: 0;
+    margin: 0;
+
+    /* Responsive grid qui s’adapte à la largeur */
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  }
+}
+
+.staff-card {
+  background: #ffffff;
+  border-radius: 0.6rem;
+  border: 1px solid #e0e0e0;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.08);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+
+  &:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.11);
+  }
+
+  &__image-wrapper {
+    width: 100%;
+    height: 160px;
+    overflow: hidden;
+    background: #f8f8f8;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  &__image {
+    width: 50%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  &__image--placeholder {
+    font-size: 2rem;
+    color: #aaa;
+  }
+
+  &__body {
+    padding: 1rem;
+    text-align: center;
+    flex: 1;
+  }
+
+  &__name {
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin: 0.5rem 0 0.25rem;
+  }
+
+  &__role {
+    font-size: 1rem;
+    color: #666;
+    margin: 0.15rem 0;
+  }
+
+  &__house {
+    font-size: 0.85rem;
+    color: #888;
+    margin-top: 0.3rem;
+    font-style: italic;
+  }
+}
+
+/* Optionnel : adapter couleurs pour mode sombre */
+@media (prefers-color-scheme: dark) {
+  .staff-list {
+    color: #eee;
+
+    &__count {
+      color: #ccc;
+    }
+  }
+
+  .staff-card {
+    background: #2a2a2a;
+    border-color: #444;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.4);
+
+    &__name,
+    &__role,
+    &__house {
+      color: #ddd;
+    }
+  }
+}

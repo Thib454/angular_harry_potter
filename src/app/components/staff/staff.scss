@@ -1,0 +1,12 @@
+.staff-page {
+  padding: 2rem;
+  background-color: #f0f0f0;
+  min-height: 100vh;
+
+  &__title {
+    font-size: 2.5rem;
+    text-align: center;
+    margin-bottom: 2rem;
+    color: #333;
+  }
+}
