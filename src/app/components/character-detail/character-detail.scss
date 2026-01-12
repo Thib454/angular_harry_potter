@@ -1,0 +1,103 @@
+/* ===== Variables (réutilisation cohérente) ===== */
+$primary-color: #4b2e83;
+$secondary-color: #f5f3fa;
+$text-color: #2c2c2c;
+$muted-color: #777;
+$card-bg: #ffffff;
+$border-radius: 12px;
+$transition: 0.25s ease;
+
+/* ===== Page ===== */
+h1 {
+  text-align: center;
+  margin-bottom: 2rem;
+  color: $primary-color;
+}
+
+/* ===== Detail Card ===== */
+.character-detail {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 2rem;
+  background-color: $card-bg;
+  border-radius: $border-radius;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+
+  display: grid;
+  grid-template-columns: 260px 1fr;
+  gap: 2rem;
+
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+
+  /* ===== Image ===== */
+  &__image-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  &__image {
+    width: 220px;
+    height: 220px;
+    border-radius: 50%;
+    object-fit: cover;
+    background-color: $secondary-color;
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+    transition: transform $transition;
+
+    &:hover {
+      transform: scale(1.05);
+    }
+  }
+
+  &__image--placeholder {
+    width: 220px;
+    height: 220px;
+    border-radius: 50%;
+    background-color: $secondary-color;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 4rem;
+    color: $primary-color;
+    opacity: 0.6;
+  }
+
+  /* ===== Infos ===== */
+  &__info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 0.75rem;
+
+    p {
+      margin: 0;
+      padding: 0.6rem 0.8rem;
+      background-color: $secondary-color;
+      border-radius: 8px;
+      font-size: 0.95rem;
+      color: $text-color;
+
+      strong {
+        color: $primary-color;
+        font-weight: 600;
+      }
+    }
+  }
+}
+
+/* ===== Mobile tweaks ===== */
+@media (max-width: 600px) {
+  .character-detail {
+    padding: 1.5rem;
+
+    &__image,
+    &__image--placeholder {
+      width: 180px;
+      height: 180px;
+    }
+  }
+}
