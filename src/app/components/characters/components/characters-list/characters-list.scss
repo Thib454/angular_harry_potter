@@ -1,73 +1,73 @@
-/* Variables (facultatif mais recommandé) */
-$primary-color: #4b2e83;
-$secondary-color: #f5f3fa;
-$text-color: #2c2c2c;
-$muted-color: #777;
-$card-bg: #ffffff;
-$border-radius: 12px;
-$transition: 0.25s ease;
-
-/* ===== Page ===== */
+/* ===============================
+   PAGE TITLE
+================================ */
 h1 {
+  font-family: var(--font-title);
+  font-size: 2.4rem;
+  margin: 3rem 0 1rem;
   text-align: center;
-  margin-bottom: 2rem;
-  color: $primary-color;
+  color: var(--color-gold);
+  text-shadow: 0 0 12px rgba(212, 175, 55, 0.4);
 }
 
-/* ===== Section ===== */
+/* ===============================
+   LIST CONTAINER
+================================ */
 .characters-list {
   max-width: 1200px;
-  margin: 0 auto;
-  padding: 1rem;
+  margin: 0 auto 5rem;
+  padding: 0 2rem;
 
   &__title {
-    font-size: 1.5rem;
+    font-family: var(--font-title);
+    font-size: 1.4rem;
     margin-bottom: 0.5rem;
   }
 
   &__count {
-    color: $muted-color;
-    margin-bottom: 1.5rem;
+    font-size: 0.9rem;
+    opacity: 0.7;
+    margin-bottom: 2rem;
   }
 
   &__grid {
     list-style: none;
-    padding: 0;
-    margin: 0;
-
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-    gap: 1.5rem;
+    gap: 2rem;
+    padding: 0;
   }
 }
 
-/* ===== Card ===== */
+/* ===============================
+   CHARACTER CARD
+================================ */
 .character-card {
-  background-color: $card-bg;
-  border-radius: $border-radius;
-  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
-  cursor: pointer;
-  overflow: hidden;
-  transition: transform $transition, box-shadow $transition;
+  position: relative;
 
-  &:hover {
-    transform: translateY(-6px);
-    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
-  }
-
-  &:active {
-    transform: translateY(-2px);
-  }
-
-  /* ===== Image ===== */
-  &__image-wrapper {
-    width: 100%;
-    height: 260px;
-    background-color: $secondary-color;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  &__link {
+    display: block;
+    height: 100%;
+    background: rgba(245, 235, 210, 0.92);
+    color: var(--color-text-dark);
+    border-radius: 14px;
     overflow: hidden;
+    text-decoration: none;
+    border: 1px solid rgba(0, 0, 0, 0.15);
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+  }
+
+  &__link:hover,
+  &__link:focus-visible {
+    transform: translateY(-8px);
+    box-shadow: 0 18px 40px rgba(0, 0, 0, 0.6);
+  }
+
+  /* IMAGE */
+  &__image-wrapper {
+    position: relative;
+    height: 280px;
+    background: #111;
   }
 
   &__image {
@@ -77,50 +77,84 @@ h1 {
   }
 
   &__image--placeholder {
-    font-size: 4rem;
-    color: $primary-color;
-    opacity: 0.6;
-  }
-    &__link {
-        text-decoration: none;
-        color: inherit;
-        display: block;
-    }
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    background:
+      radial-gradient(circle, rgba(212, 175, 55, 0.25), transparent 60%),
+      linear-gradient(135deg, #222, #000);
 
-  /* ===== Content ===== */
+    span {
+      font-size: 3rem;
+      opacity: 0.7;
+    }
+  }
+
+  /* BODY */
   &__body {
-    padding: 1rem;
+    padding: 1.2rem;
   }
 
   &__name {
-    margin: 0 0 0.5rem;
+    font-family: var(--font-title);
     font-size: 1.1rem;
-    color: $primary-color;
+    margin-bottom: 0.4rem;
   }
 
   &__actor,
   &__house,
   &__status {
-    margin: 0.25rem 0;
-    font-size: 0.9rem;
-    color: $text-color;
-  }
-
-  &__actor {
-    color: $muted-color;
-    font-style: italic;
-  }
-
-  &__status {
-    font-weight: 600;
+    font-size: 0.8rem;
+    opacity: 0.75;
+    margin-top: 0.2rem;
   }
 }
 
-/* ===== Responsive tweaks ===== */
+/* ===============================
+   HOUSE ACCENTS (auto)
+================================ */
+/* Gryffondor */
+.character-card:has(.character-card__house:contains("Gryffindor")) {
+  --house-color: #7a1c1c;
+}
+
+/* Serpentard */
+.character-card:has(.character-card__house:contains("Slytherin")) {
+  --house-color: #1f3d2b;
+}
+
+/* Serdaigle */
+.character-card:has(.character-card__house:contains("Ravenclaw")) {
+  --house-color: #1c2e4a;
+}
+
+/* Poufsouffle */
+.character-card:has(.character-card__house:contains("Hufflepuff")) {
+  --house-color: #c9a227;
+}
+
+.character-card {
+  --house-color: rgba(0, 0, 0, 0.2);
+
+  &__link {
+    border-top: 4px solid var(--house-color);
+  }
+
+  &__name {
+    color: var(--house-color);
+  }
+}
+
+/* ===============================
+   RESPONSIVE
+================================ */
 @media (max-width: 600px) {
-  .character-card {
-    &__image-wrapper {
-      height: 200px;
-    }
+  h1 {
+    font-size: 1.8rem;
+  }
+
+  .character-card__image-wrapper {
+    height: 220px;
   }
 }

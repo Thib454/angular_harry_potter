@@ -1,1 +1,67 @@
-/* You can add global styles to this file, and also import other style files */
+/* ===============================
+   FONTS
+================================ */
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Crimson+Text:wght@400;600&display=swap');
+
+/* ===============================
+   VARIABLES
+================================ */
+:root {
+  --color-bg: #0b0b0f;
+  --color-parchment: #f4ecd8;
+  --color-gold: #d4af37;
+  --color-dark-gold: #9c7c19;
+  --color-red: #7a1c1c;
+  --color-green: #1f3d2b;
+  --color-blue: #1c2e4a;
+  --color-text-dark: #2b2b2b;
+
+  --font-title: 'Cinzel', serif;
+  --font-text: 'Crimson Text', serif;
+}
+
+/* ===============================
+   RESET
+================================ */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: radial-gradient(circle at top, #1a1a22, #000);
+  color: var(--color-parchment);
+  font-family: var(--font-text);
+  min-height: 100vh;
+}
+
+/* ===============================
+   GENERIC
+================================ */
+h1, h2, h3 {
+  font-family: var(--font-title);
+  letter-spacing: 1px;
+}
+
+a {
+  color: var(--color-gold);
+  text-decoration: none;
+
+  &:hover {
+    color: var(--color-dark-gold);
+  }
+}
+
+.container {
+  max-width: 1200px;
+  margin: auto;
+  padding: 2rem;
+}
+
+/* ===============================
+   MAGIC EFFECT
+================================ */
+.magic-glow {
+  box-shadow: 0 0 15px rgba(212, 175, 55, 0.4);
+}
