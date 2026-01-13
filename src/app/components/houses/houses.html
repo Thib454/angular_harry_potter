@@ -1,0 +1,66 @@
+<section class="hp-houses">
+  <header class="hp-houses__header">
+    <h1>Choisis ta maison</h1>
+    <p class="hp-houses__subtitle">
+      Le Choixpeau magique t’attend. Choisis avec sagesse.
+    </p>
+  </header>
+
+  <div class="hp-houses__grid">
+    <!-- Gryffondor -->
+    <article
+      class="hp-house-card hp-house-card--gryffindor"
+      (click)="goToHouseDetail('gryffindor')"
+    >
+      <div class="hp-house-card__veil"></div>
+      <div class="hp-house-card__content">
+        <span class="hp-house-card__sigil">🦁</span>
+        <h2>Gryffondor</h2>
+        <p>Courage, bravoure et détermination.</p>
+        <span class="hp-btn hp-btn--house">Sélectionner</span>
+      </div>
+    </article>
+
+    <!-- Serpentard -->
+    <article
+      class="hp-house-card hp-house-card--slytherin"
+      (click)="goToHouseDetail('slytherin')"
+    >
+      <div class="hp-house-card__veil"></div>
+      <div class="hp-house-card__content">
+        <span class="hp-house-card__sigil">🐍</span>
+        <h2>Serpentard</h2>
+        <p>Ambition, ruse et détermination.</p>
+        <span class="hp-btn hp-btn--house">Sélectionner</span>
+      </div>
+    </article>
+
+    <!-- Serdaigle -->
+    <article
+      class="hp-house-card hp-house-card--ravenclaw"
+      (click)="goToHouseDetail('ravenclaw')"
+    >
+      <div class="hp-house-card__veil"></div>
+      <div class="hp-house-card__content">
+        <span class="hp-house-card__sigil">🦅</span>
+        <h2>Serdaigle</h2>
+        <p>Intelligence, sagesse et créativité.</p>
+        <span class="hp-btn hp-btn--house">Sélectionner</span>
+      </div>
+    </article>
+
+    <!-- Poufsouffle -->
+    <article
+      class="hp-house-card hp-house-card--hufflepuff"
+      (click)="goToHouseDetail('hufflepuff')"
+    >
+      <div class="hp-house-card__veil"></div>
+      <div class="hp-house-card__content">
+        <span class="hp-house-card__sigil">🦡</span>
+        <h2>Poufsouffle</h2>
+        <p>Loyauté, patience et travail acharné.</p>
+        <span class="hp-btn hp-btn--house">Sélectionner</span>
+      </div>
+    </article>
+  </div>
+</section>

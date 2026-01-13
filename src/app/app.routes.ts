@@ -1,12 +1,12 @@
 import { Routes } from '@angular/router';
 import { Home } from './core/home/home';
 import { Notfound } from './core/notfound/notfound';
-import { charactersResolver } from './shared/resolvers/characters.resolver';
 import { CharacterService } from './shared/services/characters/character-service';
 import { inject } from '@angular/core';
 import { Observable } from 'rxjs';
 import { CharacterModel } from './shared/models/character.model';
 import { characterDetailResolver } from './shared/resolvers/character-detail.resolver';
+import { houseResolver } from './shared/resolvers/houses.resolver';
 
 export const routes: Routes = [
   { path: '', component: Home, title: 'Home' }, // Eager.
@@ -44,6 +44,28 @@ export const routes: Routes = [
       section: 'Harry Potter',
       breadcrumb: 'Staff'
     }
+  },
+  {
+    path: 'houses', // Lazy-loading.
+    children: [
+      {
+        path: '', loadComponent: () => import('./components/houses/houses')
+          .then(component => component.Houses),
+        title: 'Houses',
+        data: {
+          section: 'Harry Potter',
+          breadcrumb: 'Houses'
+        },
+      },
+      {
+        path: ':id', loadComponent: () => import('./components/house-detail/house-detail')
+          .then(component => component.HouseDetail),
+        title: 'House Detail',
+        resolve: {
+          house: houseResolver
+        }
+      }
+    ],
   },
   { path: '**', component: Notfound, title: 'Not Found', pathMatch: 'full' },
 ];

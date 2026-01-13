@@ -1,0 +1,160 @@
+/* ===============================
+   PAGE TITLE
+================================ */
+h1 {
+  font-family: var(--font-title);
+  font-size: 2.4rem;
+  margin: 3rem 0 1rem;
+  text-align: center;
+  color: var(--color-gold);
+  text-shadow: 0 0 12px rgba(212, 175, 55, 0.4);
+}
+
+/* ===============================
+   LIST CONTAINER
+================================ */
+.characters-list {
+  max-width: 1200px;
+  margin: 0 auto 5rem;
+  padding: 0 2rem;
+
+  &__title {
+    font-family: var(--font-title);
+    font-size: 1.4rem;
+    margin-bottom: 0.5rem;
+  }
+
+  &__count {
+    font-size: 0.9rem;
+    opacity: 0.7;
+    margin-bottom: 2rem;
+  }
+
+  &__grid {
+    list-style: none;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 2rem;
+    padding: 0;
+  }
+}
+
+/* ===============================
+   CHARACTER CARD
+================================ */
+.character-card {
+  position: relative;
+
+  &__link {
+    display: block;
+    height: 100%;
+    background: rgba(245, 235, 210, 0.92);
+    color: var(--color-text-dark);
+    border-radius: 14px;
+    overflow: hidden;
+    text-decoration: none;
+    border: 1px solid rgba(0, 0, 0, 0.15);
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+  }
+
+  &__link:hover,
+  &__link:focus-visible {
+    transform: translateY(-8px);
+    box-shadow: 0 18px 40px rgba(0, 0, 0, 0.6);
+  }
+
+  /* IMAGE */
+  &__image-wrapper {
+    position: relative;
+    height: 280px;
+    background: #111;
+  }
+
+  &__image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  &__image--placeholder {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    background:
+      radial-gradient(circle, rgba(212, 175, 55, 0.25), transparent 60%),
+      linear-gradient(135deg, #222, #000);
+
+    span {
+      font-size: 3rem;
+      opacity: 0.7;
+    }
+  }
+
+  /* BODY */
+  &__body {
+    padding: 1.2rem;
+  }
+
+  &__name {
+    font-family: var(--font-title);
+    font-size: 1.1rem;
+    margin-bottom: 0.4rem;
+  }
+
+  &__actor,
+  &__house,
+  &__status {
+    font-size: 0.8rem;
+    opacity: 0.75;
+    margin-top: 0.2rem;
+  }
+}
+
+/* ===============================
+   HOUSE ACCENTS (auto)
+================================ */
+/* Gryffondor */
+.character-card:has(.character-card__house:contains("Gryffindor")) {
+  --house-color: #7a1c1c;
+}
+
+/* Serpentard */
+.character-card:has(.character-card__house:contains("Slytherin")) {
+  --house-color: #1f3d2b;
+}
+
+/* Serdaigle */
+.character-card:has(.character-card__house:contains("Ravenclaw")) {
+  --house-color: #1c2e4a;
+}
+
+/* Poufsouffle */
+.character-card:has(.character-card__house:contains("Hufflepuff")) {
+  --house-color: #c9a227;
+}
+
+.character-card {
+  --house-color: rgba(0, 0, 0, 0.2);
+
+  &__link {
+    border-top: 4px solid var(--house-color);
+  }
+
+  &__name {
+    color: var(--house-color);
+  }
+}
+
+/* ===============================
+   RESPONSIVE
+================================ */
+@media (max-width: 600px) {
+  h1 {
+    font-size: 1.8rem;
+  }
+
+  .character-card__image-wrapper {
+    height: 220px;
+  }
+}
