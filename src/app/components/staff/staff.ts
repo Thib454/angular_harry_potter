@@ -1,6 +1,6 @@
 import { Component, signal } from '@angular/core';
 import { Staff } from '../../shared/models/staff.model';
-import { StaffService } from '../../shared/services/staff-service';
+import { StaffService } from '../../shared/services/staff/staff-service';
 import { StaffList } from './components/staff-list/staff-list';
 // import { toSignal } from '@angular/core/rxjs-interop';
 

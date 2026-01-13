@@ -1,6 +1,6 @@
 import { Component, inject, OnInit, ChangeDetectorRef, signal, OnDestroy, Signal, computed } from '@angular/core';
 import { CharacterModel } from '../../shared/models/character.model';
-import { CharacterService } from '../../shared/services/character-service';
+import { CharacterService } from '../../shared/services/characters/character-service';
 import { CharactersList } from './components/characters-list/characters-list';
 import { Subscription } from 'rxjs';
 import { ActivatedRoute } from '@angular/router';

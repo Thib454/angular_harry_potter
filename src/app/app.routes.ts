@@ -2,10 +2,11 @@ import { Routes } from '@angular/router';
 import { Home } from './core/home/home';
 import { Notfound } from './core/notfound/notfound';
 import { charactersResolver } from './shared/resolvers/characters.resolver';
-import { CharacterService } from './shared/services/character-service';
+import { CharacterService } from './shared/services/characters/character-service';
 import { inject } from '@angular/core';
 import { Observable } from 'rxjs';
 import { CharacterModel } from './shared/models/character.model';
+import { characterDetailResolver } from './shared/resolvers/character-detail.resolver';
 
 export const routes: Routes = [
   { path: '', component: Home, title: 'Home' }, // Eager.
@@ -20,14 +21,17 @@ export const routes: Routes = [
           section: 'Harry Potter',
           breadcrumb: 'Characters'
         },
-        resolve: { 
+        resolve: {
           characters: (): Observable<CharacterModel[]> => inject(CharacterService).getAllCharacter()
-         }
+        }
       },
       {
         path: ':id', loadComponent: () => import('./components/character-detail/character-detail')
           .then(component => component.CharacterDetail),
         title: 'Character Detail',
+        resolve: {
+          character: characterDetailResolver
+        }
       }
     ],
   },
