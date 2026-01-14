@@ -7,11 +7,14 @@ import { Observable } from 'rxjs';
 import { CharacterModel } from './shared/models/character.model';
 import { characterDetailResolver } from './shared/resolvers/character-detail.resolver';
 import { houseResolver } from './shared/resolvers/houses.resolver';
+import { spellResolver } from './shared/resolvers/spells.resolver';
+import { authGuard } from './shared/guards/auth-guard';
 
 export const routes: Routes = [
   { path: '', component: Home, title: 'Home' }, // Eager.
   {
     path: 'characters', // Lazy-loading.
+    canActivate: [authGuard],
     children: [
       {
         path: '', loadComponent: () => import('./components/characters/characters')
@@ -66,6 +69,13 @@ export const routes: Routes = [
         }
       }
     ],
+  },
+  { path: 'spells', loadComponent: () => import('./components/spells/spells')
+    .then(component => component.Spells), 
+    title: 'Spells',
+    resolve: {
+      spells: spellResolver
+    }
   },
   { path: '**', component: Notfound, title: 'Not Found', pathMatch: 'full' },
 ];

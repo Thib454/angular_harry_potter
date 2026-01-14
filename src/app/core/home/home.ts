@@ -1,7 +1,7 @@
 import { Component, signal, effect } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { FormsModule } from '@angular/forms';
-import { animation, style, animate, keyframes, trigger, transition } from '@angular/animations';
+import { style, animate, keyframes, trigger, transition } from '@angular/animations';
 
 @Component({
   selector: 'app-home',

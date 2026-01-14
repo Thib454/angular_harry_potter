@@ -104,7 +104,10 @@ h1 {
 
   &__actor,
   &__house,
-  &__status {
+  &__status,
+  &__species,
+  &__gender,
+  &__patronus {
     font-size: 0.8rem;
     opacity: 0.75;
     margin-top: 0.2rem;

@@ -1,12 +1,11 @@
-import { Component, computed, effect, inject, Signal } from '@angular/core';
+import { Component, computed, effect, inject } from '@angular/core';
 import { toSignal } from '@angular/core/rxjs-interop';
 import { Title } from '@angular/platform-browser';
-import { ActivatedRoute } from '@angular/router';
-import { RouterLink } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-house-detail',
-  imports: [RouterLink],
+  imports: [],
   templateUrl: './house-detail.html',
   styleUrl: './house-detail.scss',
 })
@@ -19,6 +18,8 @@ export class HouseDetail {
     initialValue: this.activatedRoute.snapshot.data
   });
 
+  router = inject(Router);
+
   protected house = computed(() => this.routeData()['house']);
 
   constructor() {
@@ -26,4 +27,7 @@ export class HouseDetail {
       this.titleService.setTitle('House -' + (this.house()?.name ?? 'Unknown'));
     });
   }
+  protected goToCharacterDetail(id: string) {
+    this.router.navigate(['/characters', id]);
+  } 
 }

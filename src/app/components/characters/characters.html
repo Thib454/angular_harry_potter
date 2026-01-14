@@ -1,3 +1,9 @@
-<app-characters-list 
-[characters]="characters()">
-    />
+<!-- Formulaire pour ajouter un personnage -->
+ <button (click)="toggleAddCharacter()">Ajout d'un personnage</button>
+ @if (showAddCharacter()) {
+<app-add-character />
+    }
+
+<!-- Liste des personnages -->
+<app-characters-list [characters]="characters()" />
+

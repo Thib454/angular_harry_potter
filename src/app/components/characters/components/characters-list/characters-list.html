@@ -33,7 +33,15 @@
         <p class="character-card__house">
           Maison : {{ character.house || 'Inconnue' }}
         </p>
-
+        <p class="character-card__species">
+          Espèce : {{ character.species }}
+        </p>
+        <p class="character-card__gender">
+          Genre : {{ character.gender }}
+        </p>
+        <p class="character-card__patronus">
+          Patronus : {{ character.patronus || 'Inconnu' }}
+        </p>
         <p class="character-card__status">
           Statut : {{ character.alive ? 'En vie' : 'Décédé' }}
         </p>

@@ -29,22 +29,18 @@
   &-glow {
     position: absolute;
     inset: -20%;
-    background: radial-gradient(
-      circle at top,
-      rgba(212, 175, 55, 0.15),
-      transparent 60%
-    );
+    background: radial-gradient(circle at top,
+        rgba(212, 175, 55, 0.15),
+        transparent 60%);
   }
 
   &-fog {
     position: absolute;
     inset: 0;
-    background: linear-gradient(
-      120deg,
-      rgba(255, 255, 255, 0.03),
-      rgba(255, 255, 255, 0.08),
-      rgba(255, 255, 255, 0.03)
-    );
+    background: linear-gradient(120deg,
+        rgba(255, 255, 255, 0.03),
+        rgba(255, 255, 255, 0.08),
+        rgba(255, 255, 255, 0.03));
     opacity: 0.4;
     filter: blur(40px);
   }
@@ -108,13 +104,42 @@
    HERO ACTIONS
 ================================ */
 .hp-hero__actions {
-  margin-top: 2.5rem;
   display: flex;
-  gap: 1.2rem;
+  gap: 1rem;
+  flex-wrap: wrap;
+  padding: 1rem;
 
-  .hp-btn--big {
-    padding: 0.9rem 1.8rem;
-    font-size: 0.95rem;
+  .hp-btn {
+    padding: 0.8rem 1.5rem;
+    font-family: var(--font-title);
+    border-radius: 6px;
+    transition: all 0.3s ease;
+    box-shadow: 0 0 5px rgba(212, 175, 55, 0.5);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+
+    &--big {
+      font-size: 1.1rem;
+    }
+
+    &--ghost {
+      background: transparent;
+      color: var(--color-gold);
+      border: 2px solid var(--color-gold);
+
+      &:hover {
+        background-color: var(--color-gold);
+        color: var(--color-bg);
+        transform: scale(1.05) rotate(-1deg);
+        box-shadow: 0 0 20px rgba(212, 175, 55, 0.8);
+      }
+    }
+
+    &:hover {
+      transform: scale(1.05) rotate(-1deg);
+      box-shadow: 0 0 20px rgba(212, 175, 55, 0.8);
+    }
   }
 }
 
@@ -257,10 +282,21 @@
   }
 
   /* Variantes couleur */
-  &--red { border-color: rgba(122, 28, 28, 0.5); }
-  &--green { border-color: rgba(31, 61, 43, 0.5); }
-  &--blue { border-color: rgba(28, 46, 74, 0.5); }
-  &--gold { border-color: rgba(212, 175, 55, 0.5); }
+  &--red {
+    border-color: rgba(122, 28, 28, 0.5);
+  }
+
+  &--green {
+    border-color: rgba(31, 61, 43, 0.5);
+  }
+
+  &--blue {
+    border-color: rgba(28, 46, 74, 0.5);
+  }
+
+  &--gold {
+    border-color: rgba(212, 175, 55, 0.5);
+  }
 }
 
 /* ===============================

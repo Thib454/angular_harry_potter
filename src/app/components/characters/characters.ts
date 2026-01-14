@@ -1,14 +1,13 @@
-import { Component, inject, OnInit, ChangeDetectorRef, signal, OnDestroy, Signal, computed } from '@angular/core';
-import { CharacterModel } from '../../shared/models/character.model';
-import { CharacterService } from '../../shared/services/characters/character-service';
+import { Component, inject, Signal, computed, signal } from '@angular/core';
+import { CharacterModel } from '@shared/models/character.model';
 import { CharactersList } from './components/characters-list/characters-list';
-import { Subscription } from 'rxjs';
 import { ActivatedRoute } from '@angular/router';
 import { toSignal } from '@angular/core/rxjs-interop';
+import { AddCharacter } from './components/add-character/add-character';
 
 @Component({
   selector: 'app-characters',
-  imports: [CharactersList],
+  imports: [CharactersList, AddCharacter],
   templateUrl: './characters.html',
   styleUrl: './characters.scss',
 })
@@ -42,6 +41,7 @@ export class Characters {
   //Mode Signal dérivé du route resolver
   private activatedRoute = inject(ActivatedRoute);
 
+  protected showAddCharacter = signal<boolean>(false);
   private routeData = toSignal(this.activatedRoute.data, {
     initialValue: this.activatedRoute.snapshot.data
   });
@@ -52,4 +52,8 @@ export class Characters {
 
   protected section = computed(() => this.routeData()['section']);
   protected breadcrumb = computed(() => this.routeData()['breadcrumb']);
+
+  protected toggleAddCharacter(): void {
+    this.showAddCharacter.update(show => !show);
+  }
 }
