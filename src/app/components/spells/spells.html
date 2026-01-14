@@ -1,0 +1,22 @@
+<section class="hp-spells">
+  <header class="hp-spells__header">
+    <h1>Liste des sorts</h1>
+    <p class="hp-spells__subtitle">
+      Découvre les sorts magiques de l'univers de Harry Potter.
+    </p>
+  </header>
+    <div class="hp-spells__grid">
+        @for (spell of getAllSpells(); track spell.name) {
+        <article
+        class="hp-spell-card"
+        (click)="goToSpellDetail(spell.name)"
+        >
+        <div class="hp-spell-card__content">
+            <h2>{{ spell.name }}</h2>
+            <p>{{ spell.description }}</p>
+            <span class="hp-btn hp-btn--spell">Voir les détails</span>
+        </div>
+        </article>
+        }
+    </div>
+</section>
