@@ -1,0 +1,107 @@
+// ===============================
+// FORMULAIRE HARRY POTTER
+// ===============================
+
+form {
+  background: var(--color-parchment);
+  border: 3px solid var(--color-gold);
+  border-radius: 12px;
+  padding: 2rem;
+  max-width: 500px;
+  margin: 2rem auto;
+  color: #3e2f2f;
+  box-shadow: 0 0 30px rgba(0,0,0,0.5);
+
+  h2 {
+    text-align: center;
+    font-family: var(--font-title);
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+    color: var(--color-red);
+    text-shadow: 1px 1px 2px #000;
+  }
+
+  label {
+    display: block;
+    margin-bottom: 1rem;
+    font-weight: 600;
+
+    input[type="text"],
+    input[type="date"],
+    select {
+      display: block;
+      width: 100%;
+      padding: 0.5rem 0.8rem;
+      margin-top: 0.3rem;
+      border: 2px solid var(--color-text-dark);
+      border-radius: 5px;
+      background: rgba(255, 255, 255, 0.9);
+      font-family: var(--font-text);
+      font-size: 1rem;
+      transition: all 0.3s ease;
+
+      &:focus {
+        border-color: var(--color-red);
+        box-shadow: 0 0 10px var(--color-gold);
+        outline: none;
+      }
+    }
+
+    input[type="checkbox"] {
+      transform: scale(1.2);
+      margin-left: 10px;
+      cursor: pointer;
+    }
+
+    p {
+      color: red;
+      font-size: 0.9rem;
+      margin-top: 0.3rem;
+    }
+  }
+
+  select {
+    cursor: pointer;
+
+    option {
+      background: var(--color-parchment);
+    }
+  }
+
+  button {
+    width: 100%;
+    padding: 0.8rem;
+    margin-top: 1.5rem;
+    background: linear-gradient(to right, var(--color-red), var(--color-green));
+    color: var(--color-parchment);
+    font-family: var(--font-title);
+    font-weight: bold;
+    font-size: 1.1rem;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+
+    &:hover:not(:disabled) {
+      box-shadow: 0 0 15px rgba(212, 175, 55, 0.6);
+      transform: translateY(-2px);
+    }
+
+    &:disabled {
+      background: #999;
+      cursor: not-allowed;
+      box-shadow: none;
+      transform: none;
+    }
+  }
+
+  // Effet magique de scintillement
+  @keyframes sparkle {
+    0%, 100% { box-shadow: 0 0 0px var(--color-gold); }
+    50% { box-shadow: 0 0 10px var(--color-gold); }
+  }
+
+  input:focus {
+    animation: sparkle 1s infinite;
+  }
+}

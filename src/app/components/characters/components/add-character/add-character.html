@@ -1,0 +1,77 @@
+<form (ngSubmit)="submit()">
+
+    <h2>Ajout d'un personnage</h2>
+
+    <label for="name">
+        Nom :
+        <input id="name" type="text" [value]="name()" (input)="name.set($any($event.target).value)" placeholder="Name"
+            required>
+    </label>
+
+    @if (!nameValid()) {
+    <p>Le nom doit contenir au moins 3 caractères</p>
+    }
+
+    <label>
+        Espèce :
+        <select [value]="species()" (change)="species.set($any($event.target).value)">
+            @for (s of speciesList; track s) {
+            <option [value]="s">{{ s }}</option>
+            }
+        </select>
+    </label>
+
+    <label>
+        Genre :
+        <select [value]="gender()" (change)="gender.set($any($event.target).value)">
+            @for (g of genders; track g) {
+            <option [value]="g">{{ g }}</option>
+            }
+        </select>
+    </label>
+    <label>
+        Maison :
+        <select [value]="house()" (change)="house.set($any($event.target).value)">
+            @for (h of houses; track h) {
+            <option [value]="h">{{ h }}</option>
+            }
+        </select>
+    </label>
+    <label>
+        Est étudiant :
+        <input type="checkbox" [checked]="hogwartsStudent()"
+            (change)="hogwartsStudent.set($any($event.target).checked)" />
+    </label>
+    <label>
+        Est enseignant :
+        <input type="checkbox" [checked]="hogwartsStaff()" (change)="hogwartsStaff.set($any($event.target).checked)" />
+    </label>
+    <label>
+        Image URL :
+        <input type="text" [value]="image()" (input)="image.set($any($event.target).value)" placeholder="Image URL" />
+    </label>
+    <label>
+        Noms alternatifs (séparés par des virgules) :
+        <input type="text" [value]="alternateNames().join(', ')"
+            (input)="alternateNames.set($any($event.target).value.split(', '))" placeholder="Noms alternatifs" />
+    </label>
+    <label>
+        Patronus :
+        <input type="text" [value]="patronus()" (input)="patronus.set($any($event.target).value)"
+            placeholder="Patronus" />
+    </label>
+    <label>
+        Date de naissance :
+        <input type="date" [value]="dateOfBirth()" (input)="dateOfBirth.set($any($event.target).value)"
+            placeholder="Date de naissance" />
+    </label>
+    <label>
+        Anciens élèves (séparés par des virgules) :
+        <input type="text" [value]="ancestry()" (input)="ancestry.set($any($event.target).value.split(', '))"
+            placeholder="Anciens élèves" />
+    </label>
+    <button type="submit" [disabled]="!nameValid()">
+        Ajouter
+    </button>
+
+</form>
